@@ -178,3 +178,37 @@ console.log( badText );
 console.log('#################3');
 
 console.log( badText.correctGrammer() );
+
+//##################################################################################
+
+
+const services = [ {title: 'a'}, {title: 'b'}, {title: 'c'} ]
+
+function generateServices( data ) {
+    let HTML = '';
+    data.forEach( item => {
+        HTML += `<div class="service">
+                    <h3>${item.title}</h3>
+                </div>`;
+    });
+    return HTML;
+}
+
+document.querySelector('#services_block').innerHTML = generateServices(services);
+
+//##################################################################################
+
+const testimonials = [ {text: 'a'}, {text: 'b'}, {text: 'c'} ]
+
+function generateTestimonials( data ) {
+    let HTML = '';
+    data.forEach( item => {
+        HTML += `<div class="testimonial">
+                    <h3>${item.text}</h3>
+                </div>`;
+    });
+    return HTML;
+}
+
+document.querySelector('#testimonials_block').innerHTML = generateTestimonials(testimonials);
+
