@@ -13,8 +13,9 @@ const batai = [ {size: 42, color: 'red', brand: 'niiike'},
                 {size: 39, color: 'random', brand: 'rabok'}];
 
 
-function generate( target, data, html_template ){
+function generate( target, data ){
     let HTML = '',
+        html_template = document.querySelector(`${target} > script`).innerHTML,
         template = '';
     const keywords = Object.keys( data[0] );
 
@@ -22,7 +23,7 @@ function generate( target, data, html_template ){
         template = html_template;
         
         keywords.forEach( keyword => {
-            template = template.replace( keyword, item[keyword] );
+            template = template.replace( '{{'+keyword+'}}', item[keyword] );
         });
         
         HTML += template;
@@ -31,7 +32,7 @@ function generate( target, data, html_template ){
     return document.querySelector(target).innerHTML = HTML;
 }
 
-generate('#services_block', services, serviceHTML);
-generate('#testimonials_block', testimonials, testimonialHTML);
-generate('#footer', footerIcons, footerIconsHTML);
-generate('#batai', batai, bataiHTML);
+generate('#services_block', services);
+generate('#testimonials_block', testimonials);
+generate('#footer', footerIcons);
+generate('#batai', batai);
